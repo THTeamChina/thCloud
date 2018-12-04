@@ -64,7 +64,7 @@
 		<level value="ALL" />
 	</logger>
 
-	<>
+	<root>
 		<level value="INFO" />
 		<appender-ref ref="STDOUT" />
 	</root>
