@@ -1,4 +1,3 @@
-import axios from 'axios'
 import fetch from '@/utils/fetch'
 const Base64 = require('js-base64').Base64
 

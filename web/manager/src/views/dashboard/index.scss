@@ -1,0 +1,162 @@
+.dashboard-container {
+  padding: 20px;
+}
+
+dl, ol, ul, li {
+  margin-top: 0;
+  list-style: none;
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.el-card__body {
+  padding: 0 !important;
+}
+
+.m-0 {
+  margin: 0
+}
+
+.list-group p, .list-group h4 {
+  margin: 0;
+  line-height: 1.1rem;
+}
+
+.list-group h4 {
+  margin-bottom: .5rem;
+  font-family: inherit;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #14171a;
+  font-size: 1.125rem;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.list-group-flush .list-group-item {
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.align-items-start {
+  align-items: flex-start !important;
+}
+
+.align-items-end {
+  align-items: flex-end !important;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both
+}
+
+.media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.mr-30 {
+  margin-right: 10px;
+}
+
+.font-5x {
+  font-size: 4em;
+}
+
+.pan-btn {
+  padding: 10px 20px;
+  border-radius: 0;
+}
+
+.font-3x {
+  font-size: 2rem;
+  color: #19ff00;
+}
+
+.yes .yanguang {
+  color: #ffa13e
+}
+
+.no .yanguang {
+  color: #888
+}
+
+.level {
+  color: red
+}
+
+.media .content {
+  width: 100%;
+  text-align: center;
+  line-height: 4rem;
+}
+
+.yes.type0 .actived {
+  color: #ffa13e
+}
+
+.yes.type1 .actived {
+  color: #3e4bff
+}
+
+.yes.type2 .actived {
+  color: #ad3eff
+}
+
+.yes.type3 .actived {
+  color: #f700d6
+}
+
+
+.no .actived {
+  color: #888 !important
+}
+
+.payinfo {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.payinfo .money {
+  color: #840ad9;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.payinfo .money b {
+  font-size: 1.5rem;
+}
+
+.waitresult {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
