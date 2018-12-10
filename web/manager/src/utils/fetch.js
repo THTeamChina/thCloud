@@ -16,7 +16,7 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(config => {
   if (store.getters.token && config.url !== '/token') {
-    config.headers['innertoken'] = store.getters.token
+    //config.headers['innertoken'] = store.getters.token
     config.headers['token'] = store.getters.token
   }
   // 在发送请求之前,格式化参数，增加token

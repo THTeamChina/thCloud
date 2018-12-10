@@ -1,4 +1,4 @@
-import { login } from '@/api/account'
+import { login, getUserInfo } from '@/api/account'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 var jwtDecode = require('jwt-decode')
 
@@ -57,13 +57,33 @@ const user = {
       return new Promise((resolve, reject) => {
         if (state.token) {
 
-          var data = jwtDecode(state.token)
-          var roles = []
-          roles = roles.concat(data['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
-          commit('SET_NAME', data['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'])
-          commit('SET_ROLES', roles)
-          resolve(roles)
+          getUserInfo().then(response => {
+            if(response.status==200) {
+              if(!response.data.success) {
+                reject(response.data.errMsg)
+                return
+              }
 
+              var data = response.data
+              var roles = []
+              roles = roles.concat(data['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
+              roles.push(data);
+              commit('SET_NAME', data['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'])
+              commit('SET_ROLES', roles)
+              resolve(roles)
+
+            }else{
+              reject(response.statusText)
+            }
+          }).catch(error => {
+            reject(error)
+          })
+          // var data = jwtDecode(state.token)
+          // var roles = []
+          // roles = roles.concat(data['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
+          // commit('SET_NAME', data['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'])
+          // commit('SET_ROLES', roles)
+          // resolve(roles)
         } else {
           reject('no token')
         }

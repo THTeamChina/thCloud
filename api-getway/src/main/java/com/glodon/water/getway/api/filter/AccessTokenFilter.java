@@ -58,6 +58,7 @@ public class AccessTokenFilter extends AbstractZuulFilter {
 					//authResult = authApi.pathAuthorization(path);
 					if (authpath.isSuccess()) {
 						context.addZuulRequestHeader(Constants.IN_PARAM_TOKEN, authResult.getToken());
+						logger.info("innertoken:",authResult.getToken());
 						return null;
 					}
 				}

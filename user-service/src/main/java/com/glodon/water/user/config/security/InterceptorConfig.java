@@ -30,7 +30,7 @@ public class InterceptorConfig  implements HandlerInterceptor{
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {    
         log.info("---------------------开始进入请求地址拦截----------------------------");  
         String token=httpServletRequest.getHeader(Constants.IN_PARAM_TOKEN);
-        log.info("得到token"+token);  
+        log.info("得到token："+token);
         String ip = TokenUtil.getIpAddr(httpServletRequest);  
         log.info("得到x-forwarded-for:"+ip); 
         boolean bresult=TokenUtil.AuthInnerToken(token, ip, ConfigConstant.IPRoute);

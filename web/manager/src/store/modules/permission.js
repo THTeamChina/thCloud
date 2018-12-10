@@ -3,6 +3,7 @@ import { asyncRouterMap, constantRouterMap } from '@/router/index'
 const _import = require('@/router/_import_' + process.env.NODE_ENV)
 
 import Layout from '@/views/layout/Layout'
+import store from "../index";
 
 /**
  * 通过meta.role判断是否与当前用户权限匹配
@@ -56,7 +57,12 @@ const permission = {
         //后台获取用户菜单--
         fetch({
           url: '/user/function/modules',
-          method: 'post'
+          method: 'post',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          data: {
+            user_id: data.roles[1].id,
+            corp_id: data.roles[1].corpid
+          }
         }).then(response => {
           if (response.status == 200) {
             let modules = response.data.module;

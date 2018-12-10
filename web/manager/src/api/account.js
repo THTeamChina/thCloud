@@ -1,7 +1,7 @@
 import fetch from '@/utils/fetch'
 const Base64 = require('js-base64').Base64
 
-export function login(username1, password1) {
+export function login(username, password) {
   // var code = Base64.encode(username + ':' + password)
   // console.log(code)
   return fetch({
@@ -9,9 +9,17 @@ export function login(username1, password1) {
     method: 'post',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     data: {
-      username: username1,
-      password: password1
+      username: username,
+      password: password
     }
+  })
+}
+
+export function getUserInfo() {
+  return fetch({
+    url: '/user/getUserInfoByToken',
+    method: 'post',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
   })
 }
 

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/")
-public class UserController {
+public class UserController extends BaseController {
     protected static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
@@ -66,18 +66,21 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/getUserInfoByToken")
-    public UserResult getUserInfoByToken(String token) {
-        logger.info("获取用户信息：token:" + token);
+    public UserResult getUserInfoByToken() {
+        logger.info("获取用户信息：" + this.getTokenVO().getUserId());
         UserResult result = new UserResult();
-        if (StringUtils.isNotBlank(token)) {
+//        if (StringUtils.isNotBlank(token)) {
             // 查询数据库获取用户信息
-            result.setUsername("username");
-            result.setNickname("nickname");
+            User userinfo = userServiceImpl.getUserById(this.getTokenVO().getUserId());
+            result.setId(userinfo.getId());
+            result.setUsername(userinfo.getUsername());
+            result.setNickname(userinfo.getNickname());
+            result.setCorpid(userinfo.getCorpId());
             result.setStatus(ApiServiceContanst.ResultCode.RESULT_OK);
-        } else {
-            result.setErrMsg("invalid token!");
-            result.setStatus(ApiServiceContanst.ResultCode.RESULT_FAIL);
-        }
+//        } else {
+//            result.setErrMsg("invalid token!");
+//            result.setStatus(ApiServiceContanst.ResultCode.RESULT_FAIL);
+//        }
         return result;
     }
 
