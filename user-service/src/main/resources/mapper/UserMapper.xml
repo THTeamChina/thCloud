@@ -29,6 +29,61 @@
             #{id}
         </foreach>
     </select>
-   
 
+    <select id="list" resultType="java.util.Map">
+        select `id`,`username`,`corp_id`,`global_id`,`nickname`,`mobile`,`email`,`avatar_path`,`create_at`,`update_at`,`organization_id`,`is_delete`,`glodon_id`,`password`,`type`,`sort`,`is_init` from user
+        <where>
+            <if test="id != null and id != ''"> and id = #{id} </if>
+            <if test="username != null and username != ''"> and username = #{username} </if>
+            <if test="corpId != null and corpId != ''"> and corp_id = #{corpId} </if>
+            <if test="globalId != null and globalId != ''"> and global_id = #{globalId} </if>
+            <if test="nickname != null and nickname != ''"> and nickname = #{nickname} </if>
+            <if test="mobile != null and mobile != ''"> and mobile = #{mobile} </if>
+            <if test="email != null and email != ''"> and email = #{email} </if>
+            <if test="avatarPath != null and avatarPath != ''"> and avatar_path = #{avatarPath} </if>
+            <if test="createAt != null and createAt != ''"> and create_at = #{createAt} </if>
+            <if test="updateAt != null and updateAt != ''"> and update_at = #{updateAt} </if>
+            <if test="organizationId != null and organizationId != ''"> and organization_id = #{organizationId} </if>
+            <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+            <if test="glodonId != null and glodonId != ''"> and glodon_id = #{glodonId} </if>
+            <if test="password != null and password != ''"> and password = #{password} </if>
+            <if test="type != null and type != ''"> and type = #{type} </if>
+            <if test="sort != null and sort != ''"> and sort = #{sort} </if>
+            <if test="isInit != null and isInit != ''"> and is_init = #{isInit} </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from user
+        <where>
+            <if test="id != null and id != ''"> and id = #{id} </if>
+            <if test="username != null and username != ''"> and username = #{username} </if>
+            <if test="corpId != null and corpId != ''"> and corp_id = #{corpId} </if>
+            <if test="globalId != null and globalId != ''"> and global_id = #{globalId} </if>
+            <if test="nickname != null and nickname != ''"> and nickname = #{nickname} </if>
+            <if test="mobile != null and mobile != ''"> and mobile = #{mobile} </if>
+            <if test="email != null and email != ''"> and email = #{email} </if>
+            <if test="avatarPath != null and avatarPath != ''"> and avatar_path = #{avatarPath} </if>
+            <if test="createAt != null and createAt != ''"> and create_at = #{createAt} </if>
+            <if test="updateAt != null and updateAt != ''"> and update_at = #{updateAt} </if>
+            <if test="organizationId != null and organizationId != ''"> and organization_id = #{organizationId} </if>
+            <if test="isDelete != null and isDelete != ''"> and is_delete = #{isDelete} </if>
+            <if test="glodonId != null and glodonId != ''"> and glodon_id = #{glodonId} </if>
+            <if test="password != null and password != ''"> and password = #{password} </if>
+            <if test="type != null and type != ''"> and type = #{type} </if>
+            <if test="sort != null and sort != ''"> and sort = #{sort} </if>
+            <if test="isInit != null and isInit != ''"> and is_init = #{isInit} </if>
+        </where>
+    </select>
 </mapper>

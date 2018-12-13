@@ -2,6 +2,7 @@ package com.glodon.water.user.service;
 
 import java.util.List;
 import com.glodon.water.common.common.entity.User;
+import java.util.Map;
 
 public interface IUserService {
     /**
@@ -37,5 +38,9 @@ public interface IUserService {
     User getUserById(Integer id);
 
     List<String> getUsersByIds(List<String> list);
+
+    List<Map<String,Object>> list(Map<String, Object> map);
+
+    int count(Map<String, Object> map);
 
 }

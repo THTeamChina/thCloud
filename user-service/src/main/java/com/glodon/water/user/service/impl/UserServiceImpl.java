@@ -5,6 +5,7 @@ import com.glodon.water.common.common.entity.User;
 import com.glodon.water.user.dao.*;
 import com.glodon.water.user.service.IUserService;
 
+import com.sun.corba.se.impl.ior.OldJIDLObjectKeyTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +76,16 @@ public class UserServiceImpl  implements IUserService {
     @Override
     public List<String> getUsersByIds(List<String> list) {
         return usermapper.getUsersByIds(list);
-    }     
+    }
 
+    @Override
+    public List<Map<String,Object>> list(Map<String, Object> map){
+        return usermapper.list(map);
+    }
+
+    @Override
+    public int count(Map<String, Object> map){
+        return usermapper.count(map);
+    }
 
 }
